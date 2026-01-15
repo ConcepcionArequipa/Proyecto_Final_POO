@@ -40,11 +40,29 @@ public class Estudiante {
     @Column(name = "cedula",unique = true,nullable = false,length = 10)
     private String cedula;
 
+    //Edad
+
+    @NotNull(message = "La edad es obligatoria")
+    @Min(value = 16,message = "La edad minima es de 16 años")
+    @Max(value = 90, message = "La edad maxima es de 90 años")
+    @Column(name = "edad",nullable = false)
+    private Integer edad;
+
     //Email
     @NotBlank(message = "El email es obligatorio")
     @Email(message = "El email debe ser valido")
     @Column(name = "email",nullable = false,unique = true,length = 100)
     private String email;
+
+    //Carrera
+    @NotBlank(message = "La carrera es obligatoria")
+    @Size(min = 5, max = 100,message = "El nombre de la carrera debe tener entre 5 y 100 caracteres")
+    @Column(name = "carrera",nullable = false,length = 100)
+    private String carrera;
+
+
+
+
 
 
 
