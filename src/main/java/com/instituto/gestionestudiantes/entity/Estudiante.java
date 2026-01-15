@@ -60,10 +60,91 @@ public class Estudiante {
     @Column(name = "carrera",nullable = false,length = 100)
     private String carrera;
 
+    //Semestre
+    @NotNull(message = "El semestre es obligatorio")
+    @Min(value = 1,message = "El semestre minimo es 1")
+    @Max(value = 10,message = "El semestre maximo es 10")
+    @Column(name = "semestre",nullable = false)
+    private Integer semestre;
+
+    //Constructor vacio para JPA
+
+    public Estudiante() {}
+
+    public Estudiante(String nombre, String apellido, String cedula, Integer edad, String email, String carrera, Integer semestre) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.cedula = cedula;
+        this.edad = edad;
+        this.email = email;
+        this.carrera = carrera;
+        this.semestre = semestre;
+    }
+
+    //Getters y setters
 
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
+    public String getNombre() {
+        return nombre;
+    }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCarrera() {
+        return carrera;
+    }
+
+    public void setCarrera(String carrera) {
+        this.carrera = carrera;
+    }
+
+    public Integer getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(Integer semestre) {
+        this.semestre = semestre;
+    }
 }
