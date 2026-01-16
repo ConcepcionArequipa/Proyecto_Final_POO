@@ -18,16 +18,16 @@ public class EstudianteController {
 
     // GET: http://localhost:8080/api/estudiantes
     @GetMapping
-    public List<Estudiante> listar() {
-        return estudianteService.listarEstudiantes();
+    public List<Estudiante> history() {
+        return estudianteService.history();
     }
 
     // PUT: http://localhost:8080/api/estudiantes/1
     @PutMapping("/{id}")
-    public ResponseEntity<?> actualizar(@PathVariable Long id, @Valid @RequestBody Estudiante estudiante) {
+    public ResponseEntity<?> actualizer(@PathVariable Long id, @Valid @RequestBody Estudiante estudiante) {
         try {
-            Estudiante actualizado = estudianteService.actualizar(id, estudiante);
-            return ResponseEntity.ok(actualizado);
+            Estudiante actualize = estudianteService.actualizer(id, estudiante);
+            return ResponseEntity.ok(actualize);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }

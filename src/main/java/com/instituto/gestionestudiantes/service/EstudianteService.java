@@ -14,12 +14,12 @@ public class EstudianteService {
     private EstudianteRepository estudianteRepository;
 
     // Listar todos
-    public List<Estudiante> listarEstudiantes() {
+    public List<Estudiante> history() {
         return estudianteRepository.findAll();
     }
 
     // Actualizar
-    public Estudiante actualizarEstudiante(Long id,@Valid Estudiante estudianteDetalle) {
+    public Estudiante actualizer(Long id,@Valid Estudiante estudianteDetalle) {
         return estudianteRepository.findById(id).map(estudiante ->  {
             estudiante.setNombre(estudianteDetalle.getNombre());
             estudiante.setApellido(estudianteDetalle.getApellido());
