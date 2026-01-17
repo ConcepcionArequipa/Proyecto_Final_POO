@@ -29,6 +29,21 @@ public class EstudianteService {
     //3. Crear un nuevo registro
 
     public Estudiante crearEstudiante(Estudiante estudiante) {
+
+        //Validacion de la cedula
+        if (estudianteRepository.existsByCedula(estudiante.getCedula())) {
+            throw new RuntimeException("La cedula "+estudiante.getCedula()+" ya esta registrada");
+        }
+
+        //Verificar el email
+
+        if (estudianteRepository.existsByEmail(estudiante.getEmail())) {
+            throw new RuntimeException("El email "+estudiante.getEmail()+" ya esta registrado");
+        }
+
+        // Formatear nombre y apellido (opcional pero útil)
+        estudiante.setNombre(estudiante.getNombre().trim().toUpperCase());
+        estudiante.setApellido(estudiante.getApellido().trim().toUpperCase());
         return estudianteRepository.save(estudiante);
     }
 

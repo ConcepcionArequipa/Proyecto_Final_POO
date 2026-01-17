@@ -11,5 +11,6 @@ import java.util.Optional;
 
 @Repository
 public interface EstudianteRepository extends JpaRepository<Estudiante, Long> {
-
+    boolean existsByCedula(String cedula);
+    boolean existsByEmail(String email);
 }
