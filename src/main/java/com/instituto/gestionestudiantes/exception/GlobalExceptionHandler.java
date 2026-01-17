@@ -13,6 +13,7 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler {
     // Para recursos no encontrados 404
+    // En especifico, cuando no encuentra estudiante por ID
     @ExceptionHandler(RecursoNoEncontradoException.class)
     public ResponseEntity<Object>manejarRecursoNoEncontrado(RecursoNoEncontradoException ex) {
         Map<String, Object> body = new LinkedHashMap<>();
@@ -25,6 +26,7 @@ public class GlobalExceptionHandler {
     }
 
     // La solicitud contiene errores o datos inválidos (400)
+    // En especifico, cuando fallan validaciones (@Valid)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Object>manejarMethodArgumentNotValid(MethodArgumentNotValidException ex) {
         Map<String, Object> body = new LinkedHashMap<>();
@@ -48,6 +50,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object>manejarExceptionGeneral(Exception ex) {
         Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now());
+        body.put("status",500);
+        body.put("error","Internal Server Error" );
+        body.put("message","Ha ocurrido un error inesperado");
 
+        return new ResponseEntity<>(body, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
