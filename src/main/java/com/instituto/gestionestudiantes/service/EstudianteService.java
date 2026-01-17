@@ -29,10 +29,6 @@ public class EstudianteService {
     //3. Crear un nuevo registro
 
     public Estudiante crearEstudiante(Estudiante estudiante) {
-
-        //Validaciones
-
-
         return estudianteRepository.save(estudiante);
     }
 
@@ -50,6 +46,16 @@ public class EstudianteService {
             return estudianteRepository.save(estudiante);
 
         }).orElseThrow(() -> new RuntimeException("Estudiante no encontrado con id: " + id));
+    }
+
+    //Eliminar
+
+    public void eliminar(Long id) {
+        //Verifar si ya existe el id
+        if (!estudianteRepository.existsById(id)) {
+            throw new RecursoNoEncontradoException(id);
+        }
+        estudianteRepository.deleteById(id);
     }
 
 
