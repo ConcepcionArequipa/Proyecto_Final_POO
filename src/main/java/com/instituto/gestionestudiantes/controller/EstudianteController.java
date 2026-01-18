@@ -37,7 +37,7 @@ public class EstudianteController {
         Estudiante nuevo= estudianteService.crearEstudiante(estudiante);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
     }
-
+ 
     // PUT: http://localhost:8080/api/estudiantes/1
     @PutMapping("/{id}")
     public ResponseEntity<?> actualizar(@PathVariable Long id, @Valid @RequestBody Estudiante estudiante) {
