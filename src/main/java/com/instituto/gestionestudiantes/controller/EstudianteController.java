@@ -25,7 +25,7 @@ public class EstudianteController {
 
     //Obtener un registro por id
 
-    @GetMapping
+    @GetMapping ("/{id}")
     public ResponseEntity<Estudiante> obtenerPorId(@PathVariable Long id) {
         return ResponseEntity.ok(estudianteService.findById(id));
 
@@ -40,13 +40,8 @@ public class EstudianteController {
 
     // PUT: http://localhost:8080/api/estudiantes/1
     @PutMapping("/{id}")
-    public ResponseEntity<?> actualizer(@PathVariable Long id, @Valid @RequestBody Estudiante estudiante) {
-        try {
-            Estudiante actualize = estudianteService.actualizar(id, estudiante);
-            return ResponseEntity.ok(actualize);
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        }
+    public ResponseEntity<?> actualizar(@PathVariable Long id, @Valid @RequestBody Estudiante estudiante) {
+        return ResponseEntity.ok(estudianteService.actualizar(id, estudiante));
     }
 
     //Eliminar un registro
