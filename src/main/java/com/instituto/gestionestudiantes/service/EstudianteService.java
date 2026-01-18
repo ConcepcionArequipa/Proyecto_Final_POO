@@ -2,7 +2,6 @@ package com.instituto.gestionestudiantes.service;
 import com.instituto.gestionestudiantes.entity.Estudiante;
 import com.instituto.gestionestudiantes.exception.RecursoNoEncontradoException;
 import com.instituto.gestionestudiantes.repository.EstudianteRepository;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +14,7 @@ public class EstudianteService {
     private EstudianteRepository estudianteRepository;
 
     // Listar todos
-    public List<Estudiante> history() {
+    public List<Estudiante> listarEstudiantes() {
         return estudianteRepository.findAll();
     }
 
@@ -48,19 +47,31 @@ public class EstudianteService {
     }
 
     // Actualizar
-    public Estudiante actualizer(Long id,@Valid Estudiante estudianteDetalle) {
-        return estudianteRepository.findById(id).map(estudiante ->  {
-            estudiante.setNombre(estudianteDetalle.getNombre());
-            estudiante.setApellido(estudianteDetalle.getApellido());
-            estudiante.setEmail(estudianteDetalle.getEmail());
-            estudiante.setCedula(estudianteDetalle.getCedula());
-            estudiante.setEdad(estudianteDetalle.getEdad());
-            estudiante.setSemestre(estudianteDetalle.getSemestre());
-            estudiante.setCarrera(estudianteDetalle.getCarrera());
+    public Estudiante actualizar(Long id, Estudiante estudianteActualizado) {
+        //Verificar que existe
+        Estudiante estudianteExistente = findById(id);
 
-            return estudianteRepository.save(estudiante);
+        //Verificar si la cedula cambio y si ya existe
 
-        }).orElseThrow(() -> new RuntimeException("Estudiante no encontrado con id: " + id));
+        if (!estudianteExistente.getCedula().equals(estudianteActualizado.getCedula()) && estudianteRepository.existsByCedula(estudianteActualizado.getCedula())) {
+            throw new RuntimeException("Cédula "+estudianteActualizado.getCedula()+" ya esta registrada");
+        }
+
+        //Verificar si el email cambio y si ya existe
+
+        if (!estudianteExistente.getEmail().equals(estudianteActualizado.getEmail()) && estudianteRepository.existsByEmail(estudianteActualizado.getEmail())) {
+            throw new RuntimeException("Email "+estudianteActualizado.getEmail()+" ya esta registrado");
+        }
+
+        estudianteExistente.setNombre(estudianteActualizado.getNombre());
+        estudianteExistente.setApellido(estudianteActualizado.getApellido());
+        estudianteExistente.setCedula(estudianteActualizado.getCedula());
+        estudianteExistente.setEdad(estudianteActualizado.getEdad());
+        estudianteExistente.setEmail(estudianteActualizado.getEmail());
+        estudianteExistente.setSemestre(estudianteActualizado.getSemestre());
+        estudianteExistente.setCarrera(estudianteActualizado.getCarrera());
+
+        return estudianteRepository.save(estudianteExistente);
     }
 
     //Eliminar

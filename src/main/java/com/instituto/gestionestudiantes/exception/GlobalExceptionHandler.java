@@ -45,6 +45,18 @@ public class GlobalExceptionHandler {
 
     }
 
+    // Para errores de lógica de negocio como cédula/email duplicado
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<Object> manejarRuntimeException(RuntimeException ex) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now());
+        body.put("status", 400);
+        body.put("error", "Bad Request");
+        body.put("message", ex.getMessage()); // Aquí saldrá "La cedula X ya esta registrada"
+
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
+    }
+
     //Para cualquier otro error (500)
 
     @ExceptionHandler(Exception.class)

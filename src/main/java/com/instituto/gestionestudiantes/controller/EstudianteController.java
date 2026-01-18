@@ -4,6 +4,7 @@ import com.instituto.gestionestudiantes.entity.Estudiante;
 import com.instituto.gestionestudiantes.service.EstudianteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,17 +20,40 @@ public class EstudianteController {
     // GET: http://localhost:8080/api/estudiantes
     @GetMapping
     public List<Estudiante> history() {
-        return estudianteService.history();
+        return estudianteService.listarEstudiantes();
+    }
+
+    //Obtener un registro por id
+
+    @GetMapping
+    public ResponseEntity<Estudiante> obtenerPorId(@PathVariable Long id) {
+        return ResponseEntity.ok(estudianteService.findById(id));
+
+    }
+
+    // Crear un nuevo registro
+    @PostMapping
+    public ResponseEntity<Estudiante>crear(@Valid @RequestBody Estudiante estudiante) {
+        Estudiante nuevo= estudianteService.crearEstudiante(estudiante);
+        return ResponseEntity.status(HttpStatus.CREATED).body(nuevo);
     }
 
     // PUT: http://localhost:8080/api/estudiantes/1
     @PutMapping("/{id}")
     public ResponseEntity<?> actualizer(@PathVariable Long id, @Valid @RequestBody Estudiante estudiante) {
         try {
-            Estudiante actualize = estudianteService.actualizer(id, estudiante);
+            Estudiante actualize = estudianteService.actualizar(id, estudiante);
             return ResponseEntity.ok(actualize);
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();
         }
     }
+
+    //Eliminar un registro
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+        estudianteService.eliminar(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
