@@ -15,7 +15,11 @@ import java.util.List;
 public class EstudianteController {
 
     @Autowired
-    private EstudianteService estudianteService;
+    private final EstudianteService estudianteService;
+
+    public EstudianteController(EstudianteService estudianteService) {
+        this.estudianteService = estudianteService;
+    }
 
     // GET: http://localhost:8080/api/estudiantes
     @GetMapping

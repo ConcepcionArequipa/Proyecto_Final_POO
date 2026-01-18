@@ -11,7 +11,11 @@ import java.util.List;
 @Service
 public class EstudianteService {
     @Autowired //Inyeccion
-    private EstudianteRepository estudianteRepository;
+    private final EstudianteRepository estudianteRepository;
+
+    public EstudianteService(EstudianteRepository estudianteRepository) {
+        this.estudianteRepository = estudianteRepository;
+    }
 
     // Listar todos
     public List<Estudiante> listarEstudiantes() {

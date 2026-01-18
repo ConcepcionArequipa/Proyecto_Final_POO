@@ -38,6 +38,8 @@ public class Estudiante {
     @NotBlank(message = "La cedula de identidad es obligatoria")
     @Size(min = 10,max = 10,message = "La cedula debe tener 10 digitos")
     @Column(name = "cedula",unique = true,nullable = false,length = 10)
+    // Solo acepta numeros
+    @Pattern(regexp = "\\d{10}", message = "La cédula debe contener solo números")
     private String cedula;
 
     //Edad
