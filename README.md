@@ -25,7 +25,7 @@ La API valida los datos de entrada, maneja errores de forma profesional y devuel
 
 ---
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 backend-gestion-estudiantes/
@@ -121,7 +121,7 @@ Desde Swagger es posible probar todos los endpoints.
 
 ---
 
-## ▶️ Ejecución del Proyecto
+## Ejecución del Proyecto
 
 ### Backend
 
