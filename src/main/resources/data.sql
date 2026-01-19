@@ -1,3 +1,6 @@
+-- 1. Vacía la tabla y reinicia el contador AUTO_INCREMENT a 1
+TRUNCATE TABLE estudiantes;
+
 INSERT INTO estudiantes (nombre, apellido, cedula, email, edad, carrera, semestre) VALUES
 ('JUAN', 'PEREZ', '1102030401', 'juan.perez@gmail.com', 20, 'INGENIERIA DE SISTEMAS', 3),
 ('MARIA', 'LOPEZ', '0702030402', 'maria.lopez@gmail.com', 22, 'INGENIERIA EN SOFTWARE', 5),
