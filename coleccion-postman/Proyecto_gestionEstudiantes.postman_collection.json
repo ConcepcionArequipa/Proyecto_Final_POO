@@ -1,0 +1,287 @@
+{
+  "info": {
+    "_postman_id": "105d6395-bad0-419f-810f-cd0ae67bc358",
+    "name": "Proyecto_gestionEstudiantes",
+    "description": "[http://localhost:8080/api/estudiantesEndFragment](http://localhost:8080/api/estudiantesEndFragment)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51599818",
+    "_collection_link": "https://go.postman.co/collection/51599818-105d6395-bad0-419f-810f-cd0ae67bc358?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Listar Estudiantes",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/estudiantes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "estudiantes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Error 400 de cedula duplicada",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Tercera\",\r\n    \"apellido\": \"Prueba\",\r\n    \"cedula\": \"1750134511\",\r\n    \"email\": \"terceraPrueba@gmail.com\",\r\n    \"edad\": 16,\r\n    \"carrera\": \"Ingenieria de Software\",\r\n    \"semestre\": 10\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/estudiantes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "estudiantes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Error 400 de email duplicado",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Tercera\",\r\n    \"apellido\": \"Prueba\",\r\n    \"cedula\": \"1750134512\",\r\n    \"email\": \"pedro.castro@gmail.com\",\r\n    \"edad\": 16,\r\n    \"carrera\": \"Ingenieria de Software\",\r\n    \"semestre\": 10\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/estudiantes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "estudiantes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Error email invalido",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Tercera\",\r\n    \"apellido\": \"Prueba\",\r\n    \"cedula\": \"1750134512\",\r\n    \"email\": \"correo-sin-arroba\",\r\n    \"edad\": 16,\r\n    \"carrera\": \"Ingenieria de Software\",\r\n    \"semestre\": 10\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/estudiantes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "estudiantes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Error cedula invalida",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Tercera\",\r\n    \"apellido\": \"Prueba\",\r\n    \"cedula\": \"1750134h\",\r\n    \"email\": \"pedro.castro@gmail.com\",\r\n    \"edad\": 16,\r\n    \"carrera\": \"Ingenieria de Software\",\r\n    \"semestre\": 10\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/estudiantes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "estudiantes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Error de campos vacios",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"\",\r\n    \"apellido\": \"\",\r\n    \"cedula\": \"\",\r\n    \"email\": \"\",\r\n    \"edad\":\"\" ,\r\n    \"carrera\": \"\",\r\n    \"semestre\": 10\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/estudiantes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "estudiantes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Crear estudiante",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Jiovanna\",\r\n    \"apellido\": \"Vazquez\",\r\n    \"cedula\": \"1711595775\",\r\n    \"email\": \"jiovannaVazquez@gmail.com\",\r\n    \"edad\": 19,\r\n    \"carrera\": \"Ingenieria en Petroleos\",\r\n    \"semestre\": 6\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/estudiantes",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "estudiantes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Obtener por id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/estudiantes/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "estudiantes",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Actualizar un registro existente",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Juan\",\r\n    \"apellido\": \"Perez\",\r\n    \"cedula\": \"1502030403\",\r\n    \"email\": \"juan.gomez@gmail.com\",\r\n    \"edad\": 27,\r\n    \"carrera\": \"Ingeniería de Software\",\r\n    \"semestre\": 10\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/estudiantes/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "estudiantes",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Eliminar un registro",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/estudiantes/8",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "estudiantes",
+            "8"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
