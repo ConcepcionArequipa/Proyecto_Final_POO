@@ -158,7 +158,7 @@ Proyecto desarrollado por:
 
 ---
 
-## 🎥 Evidencias
+## Evidencias
 
 * Pruebas de endpoints realizadas en Postman(docs)
 * Video de funcionamiento y explicación del proyecto
