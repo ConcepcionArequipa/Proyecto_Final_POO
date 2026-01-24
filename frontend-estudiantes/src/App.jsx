@@ -40,9 +40,7 @@ function App() {
           <tbody className="text-uppercase" style={{fontSize: '0.9rem'}}>
             {estudiantes.map((est, index) => (
               <tr key={est.id || index}>
-                <td className="text-center fw-bold text-muted border-end">
-                  {String(index + 1).padStart(3, '0')}
-                </td>
+                <td className="text-center fw-bold text-muted border-end">{String(est.id).padStart(3, '0')}</td>
                 <td className="ps-3">{est.nombre}</td>
                 <td>{est.apellido}</td>
                 <td className="small text-secondary">{est.carrera}</td>
