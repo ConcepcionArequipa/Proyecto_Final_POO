@@ -141,6 +141,9 @@ Desde Swagger es posible probar todos los endpoints.
    ```
    npm install
    ```
+   ```
+   npm install bootstrap
+   ```
 3. Ejecutar:
 
    ```
