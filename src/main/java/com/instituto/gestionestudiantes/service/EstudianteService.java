@@ -2,6 +2,7 @@ package com.instituto.gestionestudiantes.service;
 import com.instituto.gestionestudiantes.entity.Estudiante;
 import com.instituto.gestionestudiantes.exception.RecursoNoEncontradoException;
 import com.instituto.gestionestudiantes.repository.EstudianteRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +26,7 @@ public class EstudianteService {
     //2. Obtener por id
 
     public Estudiante findById(Long id) {
-        return estudianteRepository.findById(id)
-                .orElseThrow(() -> new RecursoNoEncontradoException(id));
+        return estudianteRepository.findById(id).orElseThrow(() -> new RecursoNoEncontradoException(id));
     }
 
     //3. Crear un nuevo registro
@@ -44,7 +44,7 @@ public class EstudianteService {
             throw new RuntimeException("El email "+estudiante.getEmail()+" ya esta registrado");
         }
 
-        // Formatear nombre y apellido (opcional pero útil)
+        // Formatear nombre y apellido
         estudiante.setNombre(estudiante.getNombre().trim().toUpperCase());
         estudiante.setApellido(estudiante.getApellido().trim().toUpperCase());
         return estudianteRepository.save(estudiante);
